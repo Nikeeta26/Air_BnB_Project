@@ -10,3 +10,40 @@
 .nav-link{
     color: #050505 !important;
 }
+.f-info-link, .f-info-social, .f-info-brand{
+    width: 100%;
+    display: flex;
+    align-items: center;
+   justify-content: center;
+
+}
+  
+.f-info-social i{
+    font-size: 1.2rem;
+ margin-right: 0.5rem;
+ 
+}
+.f-info-link a{
+    text-decoration: none;
+    color: #222222;
+   
+}
+.f-info{
+    /* text-align: center; */
+}
+.f-info-link:hover{
+    text-decoration: underline;
+}
+
+.f-info{
+    text-align: center;
+    height: 8rem;
+    background-color: rgb(230, 222, 222);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+   
+    /* justify-content: space-evenly;
+*/
+}
