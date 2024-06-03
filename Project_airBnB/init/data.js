@@ -347,6 +347,30 @@ const sampleListings = [
       location: "Costa Rica",
       country: "Costa Rica",
     },
+    {
+      title: "Secluded Beach House in Costa Rica",
+      description:
+        "Escape to a secluded beach house on the Pacific coast of Costa Rica. Surf, relax, and unwind.",
+        image: {
+        filename: "listingimage",
+        url:"https://cdn.pixabay.com/photo/2018/08/16/08/39/hallstatt-3609863_640.jpg",
+      },
+      price: 1800,
+      location: "Costa Rica",
+      country: "Costa Rica",
+    },
+    {
+      title: "Secluded Beach House in Costa Rica",
+      description:
+        "Escape to a secluded beach house on the Pacific coast of Costa Rica. Surf, relax, and unwind.",
+        image: {
+        filename: "listingimage",
+        url:"https://thumbs.dreamstime.com/b/meadow-8867157.jpg",
+      },
+      price: 1800,
+      location: "Costa Rica",
+      country: "Costa Rica",
+    },
   ];
   
   module.exports = { data: sampleListings };
