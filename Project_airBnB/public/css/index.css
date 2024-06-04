@@ -2,17 +2,20 @@ body{
     font-family: "Plus Jakarta Sans", sans-serif !important;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+   min-height: 100vh;
     
 }
 .container
 {
     flex:1;
+   
 }
+
 .navbar{
     height:5rem;
 }
 
+/* new page */
 .fa-compass{
     color:rgb(241, 116, 116);
     font-size :2rem;
@@ -54,7 +57,7 @@ body{
     flex-wrap: wrap;
     justify-content: center;
     align-items: space-evenly;
-   width: 100%;
+  
     /* justify-content: space-evenly;
 */
 }
@@ -98,4 +101,30 @@ body{
 .card-img-overlay:hover{
     opacity: 0.2;
     background-color: aliceblue;
+}
+
+.add-btn{
+    background-color:rgb(241, 116, 116) !important ;
+    border: none !important;
+}
+
+
+/* Edit page */
+.edit-btn{
+    background-color: palevioletred !important;
+    border: none !important;
+}
+
+/* show page */
+.show-img{
+    height: 30vh;
+}
+
+.btns{
+    display: flex;
+    
+}
+.show-card{
+    padding-left:0 ;
+    padding-right: 0;
 }

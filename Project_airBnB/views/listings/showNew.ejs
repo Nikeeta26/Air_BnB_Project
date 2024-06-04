@@ -1,11 +1,11 @@
 
 <% layout('/layouts/boillerplate') -%>
   <body>
-    <div class="row">
-      <div class="col-8 ">
+    <div class="row mb-3 mt-3">
+      <div class="col-8 offset-2 ">
     <h3>Create a New Listing</h3>
     <form method="POST" action="/listings">
-      <div class="mb-3 ">
+      <div class="mb-2 ">
       <label for="title" class="form-label">Title</label>
       <input name="listing[title]" placeholder="Add a catchy title" type="text" class="form-control"/>
     </div>
@@ -42,7 +42,7 @@
         type="text" class="form-control"
       />
     </div>
-      <button class="btn btn-danger">Add</button>
+      <button class="btn add-btn mt-3">Add</button>
     </form>
   </div>
 </div>
