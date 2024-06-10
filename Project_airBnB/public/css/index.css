@@ -3,12 +3,13 @@ body{
     display: flex;
     flex-direction: column;
    min-height: 100vh;
+  
     
 }
 .container
 {
     flex:1;
-   
+   margin-bottom: 0px;
 }
 
 .navbar{
@@ -44,6 +45,7 @@ body{
 }
 .f-info{
     /* text-align: center; */
+
 }
 .f-info-link:hover{
     text-decoration: underline;
@@ -57,7 +59,7 @@ body{
     flex-wrap: wrap;
     justify-content: center;
     align-items: space-evenly;
-  
+
     /* justify-content: space-evenly;
 */
 }
