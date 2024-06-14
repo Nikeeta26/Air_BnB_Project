@@ -35,10 +35,10 @@ const validateListing = (req,res,next)=>{
   console.log(error);
 
   if(error){
-    let errMsg = error.details.map((el)=>
-      el.message).join(",");
+    // let errMsg = error.details.map((el)=>
+    //   el.message).join(",");
     
-   throw new expressError(400,errMsg);
+   throw new expressError(400,error);
   }
   else{
     next();
@@ -77,7 +77,7 @@ app.get("/listings/:id/edit",wrapAsync( async (req, res) => {
 }));
 
 
-app.put("/listings/:id",validateListing, wrapAsync(async (req, res,next) => {
+app.put("/listings/:id", validateListing, wrapAsync(async (req, res,next) => {
   let { id } = req.params;
 //   if(!req.body.listing){
 //     throw new expressError(400,"Send valid data for listing");
