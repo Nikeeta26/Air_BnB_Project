@@ -123,6 +123,7 @@ app.get("/listings/:id", async (req, res) => {
 app.post("/listings/:id/reviews",validateReview,wrapAsync(async(req,res)=>{
 
   let listing = await Listing.findById(req.params.id);
+  
   //let data = req.body.review;
   let newReviews = new Reviews(req.body.review);
 
