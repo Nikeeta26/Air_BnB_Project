@@ -1,4 +1,3 @@
-
 const mongoose = require("mongoose");
 const initData = require("./data.js");
 const Listing = require("../models/listing.js");
@@ -19,16 +18,10 @@ async function main() {
 
 const initDB = async () => {
   await Listing.deleteMany({});
-  await Listing.insertMany(initData.data);
-  // let sampleListing = new Listing({
-  //   title: 'landon wecand',
-  //   description: 'Modern Loft in Downtown',
-  //   image: 'https://thumbs.dreamstime.com/b/meadow-8867157.jpg',
-  //   price: 12000,
-  //   location: 'pune',
-  //   country: 'India',
-  //     });
-  console.log("data was initialized");
+  let data = await Listing.insertMany(initData.data);
+  console.log("data was initialized",data);
+  
+  
 };
 
 initDB();

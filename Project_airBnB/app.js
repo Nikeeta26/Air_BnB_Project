@@ -92,7 +92,6 @@ app.get("/listings/:id/edit",wrapAsync( async (req, res) => {
   res.render("./listings/edit.ejs", { listing });
 }));
 
-
 app.put("/listings/:id", validateListing, wrapAsync(async (req, res,next) => {
   let { id } = req.params;
 //   if(!req.body.listing){
