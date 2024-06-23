@@ -5,6 +5,7 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const expressError = require("./utils/expressError.js");
+const session = require("express-session");
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
@@ -31,8 +32,19 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname,"/public")));
+const sessionOption = {
+  secret:"mysupersucreatecode",
+  resave:false,
+  saveUninitialized:true,
+  cookie: {
+    expires: Date.now() + 7 * 24 * 60 * 60 * 1000, // Sets expiry date 7 days from now
+    maxAge: 7 * 24 * 60 * 60 * 1000, // Sets maximum age to 7 days
+    httpOnly:true,//use for security purpose
+  },
+  
+};
 
-
+app.use(session(sessionOption));
 
 app.get("/", (req, res) => {
   res.send("Hi, I am root");
