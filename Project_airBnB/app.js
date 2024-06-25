@@ -8,6 +8,10 @@ const expressError = require("./utils/expressError.js");
 const session = require("express-session");
 var flash = require('connect-flash');
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const User = require("./models/user.js"); 
+
 
 
 const listings = require("./routes/listing.js");
@@ -49,6 +53,16 @@ app.get("/", (req, res) => {
 
 app.use(session(sessionOption));
 app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// use static authenticate method of model in LocalStrategy
+passport.use(new LocalStrategy(User.authenticate()));
+
+// use static serialize and deserialize of model for passport session support
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use((req,res,next)=>{
   res.locals.success = req.flash("success");
