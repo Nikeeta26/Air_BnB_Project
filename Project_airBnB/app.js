@@ -56,7 +56,6 @@ app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
-
 // use static authenticate method of model in LocalStrategy
 passport.use(new LocalStrategy(User.authenticate()));
 
@@ -69,6 +68,15 @@ app.use((req,res,next)=>{
  res.locals.error = req.flash("error");
   //console.log( res.locals.success);
   next();
+});
+
+app.get("/demoUser",async(req,res)=>{
+let fakeUser = new User({
+  email:"nik@gmail.com",
+  username:"nikeeta"
+});
+let registeredUser  = await User.register(fakeUser,"helloworld");//use register method;
+res.send(registeredUser);
 });
 
 //routes 
