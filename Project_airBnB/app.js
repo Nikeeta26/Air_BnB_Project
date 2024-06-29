@@ -77,7 +77,7 @@ app.use((req,res,next)=>{
 //   email:"mik@gmail.com",
 //   username:"mikeeta"
 // });
-// let registeredUser  = await User.register(fakeUser,"helloworld");//use register method;
+//   = await User.register(fakeUser,"helloworld");//use register method;
 // res.send(registeredUser);
 // });
 
