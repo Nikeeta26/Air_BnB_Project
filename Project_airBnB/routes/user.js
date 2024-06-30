@@ -24,7 +24,7 @@ req.login(registerUser,(err)=>{
       return next(err);
     }
     req.flash("success","User signUp successfully");
-res.redirect("/listings");
+    res.redirect("/listings");
     });
     } catch(e){
         req.flash("error",e.message);
@@ -49,6 +49,7 @@ router.post("/login",saveRedirectUrl,passport.authenticate("local",{failureRedir
 });
 
 //---------------------- logout user --------------------------
+
 router.get("/logout",(req,res,next)=>{
   req.logout((err)=>{
   if(err){
