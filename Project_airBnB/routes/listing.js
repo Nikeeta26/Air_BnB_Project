@@ -33,13 +33,6 @@ router.get("/:id",listingController.showListing );
 module.exports = router;
 
 
-
-// Edit Route Update Route and Delete Route, Show Route
-// router.route("/:id")
-// .put("/:id",isLoggedIn,isOwner, validateListing, wrapAsync(listingController.UpdateData))
-// .delete("/:id",isLoggedIn,isOwner, wrapAsync(listingController.destroyListing))
-// .get("/:id",listingController.showListing );
-
 // Index Route
 //router.get("/", wrapAsync(listingController.index));
 //router.post("/",isLoggedIn, validateListing, wrapAsync(listingController.addListing));
