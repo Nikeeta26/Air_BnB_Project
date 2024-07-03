@@ -15,20 +15,19 @@ router
 .post(isLoggedIn, validateListing, wrapAsync(listingController.addListing));
 
 
-
 // New Route create Route 
 router.get("/new",isLoggedIn,listingController.renderNewform);
 
+
+//edit , delete, show
+router
+.route("/:id")
+.get(listingController.showListing )
+.put(isLoggedIn,isOwner, validateListing, wrapAsync(listingController.UpdateData))
+.delete(isLoggedIn,isOwner, wrapAsync(listingController.destroyListing))
+
 // Edit Route Update Route 
 router.get("/:id/edit",isLoggedIn,isOwner, wrapAsync(listingController.editFormShow));
-
-router.put("/:id",isLoggedIn,isOwner, validateListing, wrapAsync(listingController.UpdateData));
-
-// Delete Route
-router.delete("/:id",isLoggedIn,isOwner, wrapAsync(listingController.destroyListing));
-
-// Show Route
-router.get("/:id",listingController.showListing );
 
 module.exports = router;
 
@@ -36,3 +35,10 @@ module.exports = router;
 // Index Route
 //router.get("/", wrapAsync(listingController.index));
 //router.post("/",isLoggedIn, validateListing, wrapAsync(listingController.addListing));
+//router.put("/:id",isLoggedIn,isOwner, validateListing, wrapAsync(listingController.UpdateData));
+
+// Delete Route
+//router.delete("/:id",isLoggedIn,isOwner, wrapAsync(listingController.destroyListing));
+
+// Show Route
+//router.get("/:id",listingController.showListing );
