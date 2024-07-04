@@ -12,8 +12,10 @@ const listingController = require("../controllers/listings.js");
 router
 .route("/")
 .get( wrapAsync(listingController.index))
-.post(isLoggedIn, validateListing, wrapAsync(listingController.addListing));
-
+//.post(isLoggedIn, validateListing, wrapAsync(listingController.addListing));
+.post((req,res)=>{
+  res.send(req.body);
+});
 
 // New Route create Route 
 router.get("/new",isLoggedIn,listingController.renderNewform);
