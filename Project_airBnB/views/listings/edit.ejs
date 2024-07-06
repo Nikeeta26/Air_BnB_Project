@@ -15,10 +15,16 @@
 <%= listing.description %></textarea>
 <div class="invalid-feedback">please enter the valide description</div>
     </div>
+     
+    <div class="card col-6 mt-4  show-card listing-card">
+      Original Listing image
+      <img src="<%= originalUrlImage %>" class="card-img-top show-img" alt="listing img">
+    </div>
+
     <div class="mb-3">
       <label for="image" class="form-label">New Image Upload</label>
-      <input name="listing[image]" type="file" class="form-control"/>
-      <div class="invalid-feedback">please enter the valid image url</div>
+      <input name="listing[image]" type="file" class="form-control" />
+     </div>
   <div class="row ">
       <div class="mb-3 col-md-6 ">
       <label for="price" class="form-label">price</label>
@@ -42,10 +48,10 @@
         type="text" class="form-control" required/>
         <div class="invalid-feedback">please entee the valid location</div>
     </div>
+    <button class="btn edit-btn mt-4">Edit</button>
   </div>
-  <button class="btn edit-btn mt-4">Edit</button>
 </div>
-</div>
+
     </form>
   </body>
 

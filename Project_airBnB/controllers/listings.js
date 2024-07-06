@@ -34,7 +34,9 @@ module.exports.renderNewform =  (req, res) => {
       res.redirect("/listings");
       return;
     }
-    res.render("./listings/edit.ejs", { listing });
+    let originalUrl = listing.image.url;
+    let originalUrlImage = originalUrl.replace("upload","/upload/w_250");
+    res.render("./listings/edit.ejs", { listing, originalUrlImage });
   };
 
   // edit listings
@@ -42,7 +44,17 @@ module.exports.renderNewform =  (req, res) => {
     let { id } = req.params;
     /* use one both of
      await Listing.findByIdAndUpdate(id, req.body.listing );*/
-    await Listing.findByIdAndUpdate(id, {...req.body.listing });
+    const listing = await Listing.findByIdAndUpdate(id, {...req.body.listing });
+    
+    if(typeof req.file!== "undefined"){
+
+    let url = req.file.path;
+    let filename = req.file.filename;
+    //uploaded image at edit time
+    listing.image={url, filename};
+    await listing.save();
+
+    }
     req.flash("success","edit successfully");
     res.redirect(`/listings/${id}`);
   };
