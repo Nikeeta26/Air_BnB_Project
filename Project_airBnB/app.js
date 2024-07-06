@@ -1,3 +1,9 @@
+if(process.env.NODE_ENV != "production"){
+  require('dotenv').config();
+}
+//console.log(process.env.SECRETE);
+
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -11,6 +17,7 @@ const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js"); 
+
 
 //routes
 const listingsRouter = require("./routes/listing.js");
@@ -133,6 +140,14 @@ app.use((err, req, res, next) => {
 
 
 
-app.listen(8080, () => {
+ app.listen(8080, () => {
   console.log("server is listening to port 8080");
+ 
 });
+
+
+// use for close server
+// var server = app.listen(8080, () => {
+//   console.log("server is listening to port 8080");
+//   server.close(function() { console.log('Doh :('); });
+// });

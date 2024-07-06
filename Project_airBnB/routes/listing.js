@@ -7,17 +7,20 @@ const {isLoggedIn, isOwner,validateListing} = require("../loginMiddleware.js");
 
 const listingController = require("../controllers/listings.js");
 const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
+const {storage} = require("../cloudeConflig.js");
+//const upload = multer({ dest: 'uploads/' })
+const upload = multer({ storage });
+
 
 //router.router
   // Index Route and  New Route create Route
 router
 .route("/")
 .get( wrapAsync(listingController.index))
-//.post(isLoggedIn, validateListing, wrapAsync(listingController.addListing));
-.post(upload.single('listing[image]'),(req,res)=>{
-  res.send(req.file);
-});
+.post(isLoggedIn, 
+  upload.single('listing[image]'), validateListing,
+  wrapAsync(listingController.addListing));
+
 
 // New Route create Route 
 router.get("/new",isLoggedIn,listingController.renderNewform);
@@ -27,7 +30,7 @@ router.get("/new",isLoggedIn,listingController.renderNewform);
 router
 .route("/:id")
 .get(listingController.showListing )
-.put(isLoggedIn,isOwner, validateListing, wrapAsync(listingController.UpdateData))
+.put(isLoggedIn,isOwner,upload.single('listing[image]') validateListing, wrapAsync(listingController.UpdateData))
 .delete(isLoggedIn,isOwner, wrapAsync(listingController.destroyListing))
 
 // Edit Route Update Route 
