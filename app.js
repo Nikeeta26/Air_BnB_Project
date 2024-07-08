@@ -146,7 +146,7 @@ app.use("/",userRouter);
 // });
 // custome expressError
 app.all("*", (req, res, next) => {
-  throw new expressError(404, "Page not found !");
+  throw new expressError(404, "Page not found error !");
 });
 
 
