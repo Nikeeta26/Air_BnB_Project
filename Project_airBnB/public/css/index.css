@@ -66,13 +66,17 @@ body{
 
 .row{
     display: flex !important;
-    justify-content: space-evenly;
+    justify-content: space-between;
     flex-wrap: wrap;
-    /* margin-left: 2rem !important; */
+width: 100% !important;
+     /* margin-left: 2rem !important; 
+     margin-right: 2rem; */
 }
 .listing-card{
     border: none !important;
     margin-bottom:2rem ;
+    margin-left: 2rem;
+    margin-right: 2rem;
 }
 
 .card-img-top{
