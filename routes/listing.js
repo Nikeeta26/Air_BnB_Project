@@ -21,6 +21,10 @@ router
   upload.single('listing[image]'), validateListing,
   wrapAsync(listingController.addListing));
 
+//.post( upload.single('listing[image]'),(req,res)=>{
+// res.send(req.file);
+// console.log(req.file);
+//  })
 
 // New Route create Route 
 router.get("/new",isLoggedIn,listingController.renderNewform);
