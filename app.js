@@ -19,6 +19,9 @@ var flash = require('connect-flash');
  //const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 const dbURL = process.env.ATLASDB_URL;
 
+if (!dbURL) {
+  throw new Error('MONGO_URL environment variable is not set');
+}
 
 
 const passport = require("passport");
