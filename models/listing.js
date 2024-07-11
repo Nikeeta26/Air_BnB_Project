@@ -2,6 +2,7 @@
 const mongoose = require("mongoose");
 const Review = require("./reviews.js");
 const User = require("./user.js");
+const { string } = require("joi");
 const Schema = mongoose.Schema;
 
 const listingSchema = new Schema({
@@ -32,7 +33,12 @@ const listingSchema = new Schema({
   owner:{
     type:Schema.Types.ObjectId,
     ref:"User"
+  },
+  category:{
+  type:String,
+  enum:["mountains","forms"]
   }
+
 });
 
 listingSchema.post("findOneAndDelete",async(listing)=>{
