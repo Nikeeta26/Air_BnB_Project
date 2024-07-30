@@ -67,7 +67,7 @@ body{
 
 .row{
     display: flex !important;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 width: 100% !important;
      /* margin-left: 2rem !important; 

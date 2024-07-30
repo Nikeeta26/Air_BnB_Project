@@ -16,12 +16,12 @@ const session = require("express-session");
 const MongoStore = require('connect-mongo');
 var flash = require('connect-flash');
 
- //const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
-const dbURL = process.env.ATLASDB_URL;
+ const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+//const dbURL = process.env.ATLASDB_URL;
 
-if (!dbURL) {
-  throw new Error('MONGO_URL environment variable is not set');
-}
+// if (!MONGO_URL) {
+//   throw new Error('MONGO_URL environment variable is not set');
+// }
 
 
 const passport = require("passport");
@@ -44,7 +44,7 @@ main()
 
 
 async function main() {
-  await mongoose.connect(dbURL);
+  await mongoose.connect(MONGO_URL);
 }
 
 app.set("view engine", "ejs");
@@ -55,7 +55,8 @@ app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname,"/public")));
 
 const store = MongoStore.create({
-  mongoUrl:dbURL,
+ // mongoUrl:dbURL,
+ mongoUrl:MONGO_URL,
   crypto: {
     secret: process.env.SECRET
   },
