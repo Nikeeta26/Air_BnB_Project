@@ -17,7 +17,7 @@ const MongoStore = require('connect-mongo');
 var flash = require('connect-flash');
 
  const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
-//const dbURL = process.env.ATLASDB_URL;
+const dbURL = process.env.ATLASDB_URL;
 
 // if (!MONGO_URL) {
 //   throw new Error('MONGO_URL environment variable is not set');
@@ -44,7 +44,7 @@ main()
 
 
 async function main() {
-  await mongoose.connect(MONGO_URL);
+  await mongoose.connect(dbURL);
 }
 
 app.set("view engine", "ejs");

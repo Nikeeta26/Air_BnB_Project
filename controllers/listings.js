@@ -11,6 +11,27 @@ module.exports.renderNewform =  (req, res) => {
     res.render("./listings/showNew.ejs");
   };
 
+module.exports.index = async (req, res) => {
+    const { q, category } = req.query; // extract search query and category filter
+    let query = {};
+
+    // Check if a search query exists
+    if (q) {
+        query = {
+            $text: { $search: q } // Use MongoDB full-text search
+        };
+    }
+
+    // If a category is selected, add it to the query filter
+    if (category) {
+        query.category = category;
+    }
+
+    const allListings = await Listing.find(query);
+    res.render("./listings/index.ejs", { allListings, searchQuery: q });
+};
+
+
   // add listings
   module.exports.addListing = async (req, res, next) => {
     //let{path,filename}=req.file
@@ -81,3 +102,38 @@ module.exports.renderNewform =  (req, res) => {
     console.log(listing);
     res.render("./listings/show.ejs", { listing });
   };
+  
+  
+  module.exports.index = async (req, res) => {
+    const { q, category } = req.query;
+    let query = {};
+  try{
+    if (q) {
+      query = {
+        $or: [
+          { title: { $regex: q, $options: 'i' } }, // Search by title
+          { category: { $regex: q, $options: 'i' } } // Search by category
+        ]
+      };
+    }
+  
+    if (category) {
+      query.category = category;
+    }
+  
+    const allListings = await Listing.find(query);
+  
+    if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+      // Return JSON if it's an AJAX request
+      return res.json(allListings);
+    }
+  
+    // If it's a normal request, render the page with the listings
+    res.render("./listings/index.ejs", { allListings, searchQuery: q });
+  }catch(e){
+    console.log(e);
+    req.flash("error","Listing you requested for does not exit");
+    res.render("./listings/index.ejs");
+  }
+  };
+  
