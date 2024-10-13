@@ -3,6 +3,7 @@
  "node":"20.14.0"
    },
    "name": "project_airbnb",
+   "rootDir": "backend",
    "version": "1.0.0",
    "main": "index.js",
    "scripts": {
